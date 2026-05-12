@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Logos — A Light House initiative</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#18160f;--ink-soft:#2a2820;--ink-mid:#3a3830;
+  --warm:#f6f3ee;--paper:#edeae3;--rule:#d5d0c8;
+  --signal:#5db5a3;--tort:#c8a96e;--stone:#8a8478;
+  --red:#b5453a;--violet:#6b5f94;
+  --f:'Outfit',sans-serif;--mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--f);background:var(--warm);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 64px;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(24,22,15,0.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.nav-mark{display:flex;align-items:center;gap:14px;}
+.lh-word{font-size:13px;letter-spacing:0.1em;}
+.lh-word .light{font-weight:200;color:rgba(255,255,255,0.6);}
+.lh-word .house{font-weight:700;color:rgba(255,255,255,0.88);}
+.nav-sep{width:1px;height:16px;background:rgba(255,255,255,0.1);}
+.nav-product{font-family:var(--mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--signal);}
+.nav-ctas{display:flex;gap:12px;}
+.nav-btn{font-family:var(--mono);font-size:8.5px;letter-spacing:0.14em;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-ghost{border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.5);}
+.btn-ghost:hover{border-color:var(--signal);color:var(--signal);}
+.btn-tort{border:1px solid var(--tort);color:var(--tort);}
+.btn-tort:hover{background:var(--tort);color:var(--ink);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;background:var(--ink);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 64px 80px;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 80% 30%,rgba(93,181,163,0.07) 0%,transparent 60%),
+             radial-gradient(ellipse 40% 40% at 15% 70%,rgba(200,169,110,0.05) 0%,transparent 50%);
+}
+.hero-phi{
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  font-size:clamp(280px,30vw,480px);font-weight:700;color:rgba(255,255,255,0.025);
+  line-height:1;font-family:var(--f);user-select:none;letter-spacing:-0.04em;
+}
+.hero-content{position:relative;z-index:2;max-width:820px;}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--signal);margin-bottom:36px;display:flex;align-items:center;gap:16px;
+}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--signal);}
+.hero-h1{
+  font-size:clamp(48px,6vw,88px);font-weight:700;line-height:1.0;
+  color:#fff;letter-spacing:-0.03em;margin-bottom:8px;
+}
+.hero-h1 em{font-style:normal;color:var(--signal);}
+.hero-sub{
+  font-size:clamp(14px,1.8vw,20px);font-weight:200;
+  color:rgba(255,255,255,0.45);margin-bottom:56px;letter-spacing:0.01em;line-height:1.5;
+  max-width:620px;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-hero-primary{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  padding:16px 32px;border-radius:2px;cursor:pointer;text-decoration:none;
+  background:var(--signal);color:var(--ink);font-weight:400;transition:all .2s;
+  border:1px solid var(--signal);
+}
+.btn-hero-primary:hover{background:transparent;color:var(--signal);}
+.btn-hero-secondary{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  padding:16px 32px;border-radius:2px;cursor:pointer;text-decoration:none;
+  border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.5);transition:all .2s;
+}
+.btn-hero-secondary:hover{border-color:var(--tort);color:var(--tort);}
+.hero-scroll{
+  position:absolute;bottom:40px;right:64px;
+  font-family:var(--mono);font-size:8px;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);display:flex;align-items:center;gap:10px;
+}
+.hero-scroll::after{content:'';display:block;width:1px;height:40px;background:rgba(255,255,255,0.12);}
+
+/* ── STAT BAR ── */
+.stat-bar{
+  background:var(--ink-soft);padding:32px 64px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.stat-item{padding:0 24px;border-left:1px solid rgba(255,255,255,0.07);}
+.stat-item:first-child{border-left:none;padding-left:0;}
+.stat-num{font-size:clamp(22px,2.5vw,32px);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1;}
+.stat-num span{font-size:0.55em;font-weight:300;color:var(--signal);vertical-align:super;}
+.stat-label{font-family:var(--mono);font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:8px;}
+.stat-source{font-family:var(--mono);font-size:7px;letter-spacing:0.1em;color:rgba(255,255,255,0.15);margin-top:4px;}
+
+/* ── SECTIONS ── */
+section{padding:100px 64px;}
+.section-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:var(--signal);margin-bottom:20px;}
+.section-h2{font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:24px;}
+.section-body{font-size:16px;font-weight:300;line-height:1.8;color:var(--stone);max-width:600px;}
+
+/* ── THESIS ── */
+.thesis{background:var(--ink);color:#fff;}
+.thesis .section-eyebrow{color:var(--tort);}
+.thesis .section-h2{color:#fff;}
+.thesis-statement{
+  max-width:800px;margin-top:48px;
+  font-size:clamp(20px,2.5vw,32px);font-weight:200;line-height:1.6;
+  color:rgba(255,255,255,0.75);letter-spacing:-0.01em;
+}
+.thesis-statement strong{color:#fff;font-weight:600;}
+.thesis-statement em{font-style:normal;color:var(--signal);}
+.thesis-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;}
+.tp{padding:36px 32px;background:rgba(255,255,255,0.03);border-top:2px solid rgba(255,255,255,0.08);}
+.tp:first-child{border-top-color:var(--signal);}
+.tp-num{font-family:var(--mono);font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;}
+.tp-head{font-size:17px;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.3;}
+.tp-body{font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7;}
+
+/* ── PROBLEM ── */
+.problem{background:var(--warm);}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-top:64px;}
+.problem-statement{border-top:2px solid var(--signal);padding-top:32px;}
+.problem-statement p{font-size:18px;font-weight:300;line-height:1.75;color:var(--ink);}
+.problem-statement p strong{font-weight:600;}
+.problem-quotes{display:flex;flex-direction:column;gap:24px;}
+.pq{padding:28px;background:var(--paper);border-left:3px solid var(--rule);}
+.pq-text{font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-mid);font-style:italic;}
+.pq-attr{font-family:var(--mono);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-top:12px;}
+
+/* ── PRODUCT ── */
+.product{background:var(--paper);}
+.product-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:64px;}
+.product-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.ps-item{background:var(--warm);padding:24px 20px;}
+.ps-num{font-size:clamp(28px,3vw,40px);font-weight:700;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
+.ps-label{font-family:var(--mono);font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--stone);margin-top:8px;}
+.product-desc p{font-size:16px;font-weight:300;line-height:1.8;color:var(--ink-mid);margin-bottom:20px;}
+.product-url{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--signal);border-bottom:1px solid var(--signal);padding-bottom:4px;
+  text-decoration:none;margin-top:8px;
+}
+.product-url:hover{color:var(--tort);border-color:var(--tort);}
+.product-mvp-tag{
+  display:inline-block;margin-top:24px;
+  font-family:var(--mono);font-size:8px;letter-spacing:0.18em;text-transform:uppercase;
+  padding:6px 14px;background:rgba(93,181,163,0.12);color:var(--signal);border-radius:2px;
+}
+
+/* ── MARKET ── */
+.market{background:var(--ink);color:#fff;}
+.market .section-eyebrow{color:var(--tort);}
+.market .section-h2{color:#fff;}
+.market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;}
+.market-card{background:rgba(255,255,255,0.03);padding:40px 32px;border-top:2px solid rgba(255,255,255,0.07);}
+.market-card.accent{border-top-color:var(--signal);}
+.market-card.accent2{border-top-color:var(--tort);}
+.mc-num{font-size:clamp(32px,3.5vw,52px);font-weight:700;color:#fff;letter-spacing:-0.03em;line-height:1;margin-bottom:12px;}
+.mc-num sup{font-size:0.4em;font-weight:300;color:var(--signal);vertical-align:super;}
+.mc-num.tort sup{color:var(--tort);}
+.mc-label{font-size:15px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.5;margin-bottom:16px;}
+.mc-source{font-family:var(--mono);font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+
+/* ── THREE-TIER MARKET ── */
+.tam{background:var(--warm);}
+.tam .section-eyebrow{color:var(--signal);}
+.tam-tiers{display:flex;flex-direction:column;gap:2px;margin-top:64px;}
+.tam-tier{
+  display:grid;grid-template-columns:200px 1fr 200px;
+  align-items:center;gap:48px;padding:40px 48px;background:var(--paper);
+  border-left:3px solid var(--rule);
+}
+.tam-tier.t1{border-left-color:var(--signal);}
+.tam-tier.t2{border-left-color:var(--tort);}
+.tam-tier.t3{border-left-color:var(--stone);}
+.tt-label{font-family:var(--mono);font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:var(--stone);margin-bottom:8px;}
+.tt-name{font-size:20px;font-weight:700;color:var(--ink);line-height:1.2;}
+.tt-body{font-size:14px;font-weight:300;color:var(--stone);line-height:1.65;}
+.tt-num{text-align:right;}
+.tt-schools{font-size:clamp(28px,3vw,40px);font-weight:700;color:var(--ink);letter-spacing:-0.03em;line-height:1;}
+.tt-schools-label{font-family:var(--mono);font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-top:6px;}
+.tam-total{
+  margin-top:48px;padding:40px 48px;
+  background:var(--ink);color:#fff;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:center;
+}
+.tt-total-head{font-family:var(--mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--tort);margin-bottom:8px;}
+.tt-total-num{font-size:clamp(32px,4vw,52px);font-weight:700;color:#fff;letter-spacing:-0.03em;}
+.tt-total-body{font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.65;}
+
+/* ── VISION ── */
+.vision{background:var(--paper);}
+.vision-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:64px;}
+.vc{padding:36px 28px;background:var(--warm);border-top:2px solid var(--rule);}
+.vc.active{background:var(--ink);border-top-color:var(--signal);}
+.vc.oikonomia{border-top-color:var(--tort);}
+.vc.politeia{border-top-color:#b5453a;}
+.vc.physica{border-top-color:#6b5f94;}
+.vc-phi{font-size:28px;font-weight:700;margin-bottom:16px;line-height:1;}
+.vc.active .vc-phi{color:var(--signal);}
+.vc-name{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;}
+.vc.active .vc-name{color:rgba(255,255,255,0.5);}
+.vc-desc{font-size:13px;font-weight:300;line-height:1.65;color:var(--stone);}
+.vc.active .vc-desc{color:rgba(255,255,255,0.4);}
+.vc-tag{
+  display:inline-block;margin-top:20px;
+  font-family:var(--mono);font-size:7.5px;letter-spacing:0.16em;text-transform:uppercase;
+  padding:5px 10px;border-radius:2px;
+}
+.vc.active .vc-tag{background:rgba(93,181,163,0.15);color:var(--signal);}
+.vc .vc-tag{background:var(--rule);color:var(--stone);}
+
+/* ── TRACTION ── */
+.traction{background:var(--warm);padding-top:100px;}
+.traction-arrow{
+  position:relative;margin-top:48px;
+}
+.traction-track{
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+}
+/* Arrow line — top: label height (20px) + margin-bottom (8px) + half dot (7px) = 35px */
+.traction-line{
+  position:absolute;
+  top:35px;
+  left:7px;
+  right:0;
+  height:2px;
+  background:linear-gradient(to right, var(--signal) 0%, rgba(93,181,163,0.25) 100%);
+  z-index:0;
+}
+.traction-line::after{
+  content:'';
+  position:absolute;
+  right:-8px;top:50%;transform:translateY(-50%);
+  border-left:10px solid rgba(93,181,163,0.25);
+  border-top:6px solid transparent;
+  border-bottom:6px solid transparent;
+}
+.traction-nodes{
+  display:flex;
+  width:100%;
+  position:relative;z-index:1;
+}
+.tt-node{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding-right:16px;
+}
+.tt-label{
+  font-family:var(--mono);font-size:7.5px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--signal);line-height:1.4;
+  height:20px;display:flex;align-items:center;
+  margin-bottom:8px;
+}
+.tt-node:last-child .tt-label{color:var(--tort);}
+.tt-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--signal);
+  border:3px solid var(--paper);
+  box-shadow:0 0 0 2px var(--signal);
+  flex-shrink:0;
+}
+.tt-node:last-child .tt-dot{background:var(--tort);box-shadow:0 0 0 2px var(--tort);}
+.tt-text{
+  font-size:12px;font-weight:300;color:var(--stone);line-height:1.55;
+  margin-top:16px;
+}
+.tt-text strong{font-weight:700;color:var(--ink);display:block;margin-bottom:3px;font-size:12px;}
+@media(max-width:900px){
+  .traction-nodes{flex-direction:column;gap:32px;}
+  .traction-line{display:none;}
+  .tt-node{padding-right:0;}
+}
+
+/* ── REVENUE MODEL ── */
+.revenue{background:var(--ink);}
+.revenue .section-eyebrow{color:var(--signal);}
+.revenue .section-h2{color:#fff;}
+.revenue .section-body{color:rgba(255,255,255,0.4);}
+.revenue-streams{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:64px;}
+.rs{padding:36px 28px;background:rgba(255,255,255,0.03);border-top:2px solid rgba(255,255,255,0.08);}
+.rs:first-child{border-top-color:var(--signal);}
+.rs:nth-child(2){border-top-color:var(--tort);}
+.rs-num{font-family:var(--mono);font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;}
+.rs-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;}
+.rs-price{font-size:13px;font-weight:300;color:rgba(255,255,255,0.35);margin-bottom:20px;font-style:italic;}
+.rs-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.rs-features li{font-size:13px;font-weight:300;color:rgba(255,255,255,0.45);padding-left:16px;position:relative;line-height:1.5;}
+.rs-features li::before{content:'—';position:absolute;left:0;color:rgba(255,255,255,0.2);}
+.rs:first-child .rs-features li::before{color:var(--signal);}
+.revenue-projections{margin-top:48px;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
+.rp{padding:28px 24px;background:rgba(255,255,255,0.03);text-align:center;}
+.rp-year{font-family:var(--mono);font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px;}
+.rp-rev{font-size:clamp(18px,2vw,26px);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1;}
+.rp-rev span{font-size:0.55em;font-weight:300;color:var(--signal);vertical-align:super;}
+.rp-ebitda{font-family:var(--mono);font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-top:8px;}
+.rp.highlight{background:rgba(93,181,163,0.08);border-top:2px solid var(--signal);}
+
+/* ── FOUNDER ── */
+.founder{background:var(--warm);}
+.founder-grid{display:grid;grid-template-columns:360px 1fr;gap:80px;align-items:start;margin-top:64px;}
+.founder-img{width:100%;aspect-ratio:4/5;background:var(--paper);border:1px solid var(--rule);position:relative;overflow:hidden;margin-bottom:0;}
+.founder-img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;}
+.founder-name{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);padding:14px 0;border-bottom:1px solid var(--rule);margin-bottom:24px;}
+.founder-role{font-family:var(--mono);font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--signal);margin-top:4px;}
+.founder-bio p{font-size:16px;font-weight:300;line-height:1.85;color:var(--ink-mid);margin-bottom:20px;}
+.founder-bio p:last-child{margin-bottom:0;}
+.founder-lh{margin-top:36px;padding:24px;background:var(--paper);border-left:3px solid var(--tort);}
+.flh-label{font-family:var(--mono);font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--tort);margin-bottom:8px;}
+.flh-text{font-size:14px;font-weight:300;line-height:1.7;color:var(--stone);}
+
+/* ── WHY FOUNDER ── */
+.why-founder{background:var(--paper);}
+.why-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:48px;}
+.wf{background:var(--warm);padding:28px 22px;border-top:3px solid var(--rule);}
+.wf:first-child{border-top-color:var(--signal);}
+.wf-num{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--stone);margin-bottom:12px;}
+.wf-head{font-size:14px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:10px;}
+.wf-body{font-size:12.5px;font-weight:300;color:var(--stone);line-height:1.65;}
+
+/* ── ASK ── */
+.ask{background:var(--ink);}
+.ask .section-eyebrow{color:var(--tort);}
+.ask .section-h2{color:#fff;}
+.ask .section-body{color:rgba(255,255,255,0.4);}
+.ask-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px;}
+.ak{padding:40px 32px;background:rgba(255,255,255,0.03);}
+.ak-label{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--tort);margin-bottom:16px;}
+.ak-head{font-size:18px;font-weight:700;color:#fff;margin-bottom:16px;}
+.ak-body{font-size:14px;font-weight:300;color:rgba(255,255,255,0.45);line-height:1.7;}
+.ask-total{
+  margin-top:48px;padding:40px;
+  border:1px solid rgba(200,169,110,0.2);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
+}
+.at-label{font-family:var(--mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+.at-amount{font-size:clamp(32px,4vw,52px);font-weight:700;color:var(--tort);letter-spacing:-0.03em;}
+.at-desc{font-size:14px;font-weight:300;color:rgba(255,255,255,0.4);max-width:420px;line-height:1.65;}
+.ask-returns{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px;}
+.ar{padding:32px;background:rgba(255,255,255,0.02);text-align:center;}
+.ar-label{font-family:var(--mono);font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:10px;}
+.ar-num{font-size:clamp(24px,3vw,36px);font-weight:700;color:var(--signal);letter-spacing:-0.02em;}
+.ar-desc{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3);margin-top:6px;line-height:1.5;}
+
+/* ── CTA ── */
+.cta-section{background:var(--warm);text-align:center;padding:120px 64px;}
+.cta-phi{font-size:80px;font-weight:700;color:var(--rule);letter-spacing:-0.04em;line-height:1;margin-bottom:32px;}
+.cta-h2{font-size:clamp(24px,3vw,40px);font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:16px;}
+.cta-sub{font-size:16px;font-weight:300;color:var(--stone);margin-bottom:56px;line-height:1.7;}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-primary{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  padding:18px 40px;border-radius:2px;cursor:pointer;text-decoration:none;
+  background:var(--ink);color:var(--warm);border:1px solid var(--ink);transition:all .25s;
+}
+.btn-cta-primary:hover{background:var(--signal);border-color:var(--signal);color:var(--ink);}
+.btn-cta-secondary{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+  padding:18px 40px;border-radius:2px;cursor:pointer;text-decoration:none;
+  border:1px solid var(--rule);color:var(--stone);transition:all .25s;
+}
+.btn-cta-secondary:hover{border-color:var(--tort);color:var(--tort);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink-soft);padding:40px 64px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.footer-brand{font-size:12px;font-weight:300;color:rgba(255,255,255,0.3);}
+.footer-brand strong{font-weight:600;color:rgba(255,255,255,0.6);}
+.footer-tagline{font-family:var(--mono);font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.18);}
+
+/* ── RULE ── */
+.h-rule{height:1px;background:var(--rule);margin:0 64px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:16px 24px;}
+  .nav-ctas{display:none;}
+  .hero{padding:0 24px 64px;}
+  section{padding:72px 24px;}
+  .stat-bar{grid-template-columns:repeat(2,1fr);padding:24px;}
+  .problem-grid,.product-grid,.founder-grid{grid-template-columns:1fr;}
+  .market-grid,.revenue-streams,.ask-grid,.ask-returns{grid-template-columns:1fr;}
+  .thesis-pillars,.vision-grid{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .tam-tier{grid-template-columns:1fr;gap:16px;}
+  .tam-total{grid-template-columns:1fr;}
+  .revenue-projections{grid-template-columns:1fr 1fr;}
+  .founder-img{width:100%;height:300px;}
+  .h-rule{margin:0 24px;}
+  .cta-section{padding:80px 24px;}
+  footer{padding:32px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-mark">
+    <span class="lh-word"><span class="light">light </span><span class="house">house</span></span>
+    <div class="nav-sep"></div>
+    <span class="nav-product">Λ Project Logos</span>
+  </div>
+  <div class="nav-ctas">
+    <a href="#product" class="nav-btn btn-ghost">The Product</a>
+    <a href="#market" class="nav-btn btn-ghost">The Market</a>
+    <a href="#investor" class="nav-btn btn-tort">Investor Enquiry</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-phi">Λ</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Light House initiative</div>
+    <h1 class="hero-h1">AI makes information<br>free. <em>Judgment</em><br>is now scarce.</h1>
+    <p class="hero-sub">Project Logos is reasoning infrastructure for the AI era — a platform that teaches the world to think. Philosophia is the proof of concept. The market is every school on the planet.</p>
+    <div class="hero-actions">
+      <a href="https://rossduncan.com/philosophia" target="_blank" class="btn-hero-primary">Explore Philosophia →</a>
+      <a href="#investor" class="btn-hero-secondary">Investor Enquiry</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item">
+    <div class="stat-num">6,100<span>+</span></div>
+    <div class="stat-label">IB World Schools</div>
+    <div class="stat-source">Source: IBO, April 2026</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">50K<span>+</span></div>
+    <div class="stat-label">Int'l Curriculum Schools</div>
+    <div class="stat-source">A-Level, French Bac, AP, ATAR globally</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">500K<span>+</span></div>
+    <div class="stat-label">Upper Secondary Schools</div>
+    <div class="stat-source">Global platform potential</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">$10<span>T</span></div>
+    <div class="stat-label">Global Education Market</div>
+    <div class="stat-source">Projected by 2030, Source: HolonIQ</div>
+  </div>
+</div>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="section-eyebrow">The Thesis</div>
+  <h2 class="section-h2">This is not an EdTech product.<br>It is reasoning infrastructure.</h2>
+  <div class="thesis-statement">
+    In 2025, a former teacher with millions of YouTube viewers said plainly: <em>"The education system is producing people who cannot think — not because they lack intelligence, but because the institutions that should be teaching them to think are actively preventing it."</em> That's the problem. Project Logos is the solution.
+  </div>
+  <div class="thesis-statement" style="margin-top:32px;">
+    Industrial education was optimised for <strong>information scarcity</strong>. AI makes information <em>free</em>. The scarce resource is now <strong>judgment</strong> — the ability to reason, evaluate, and decide under uncertainty. Every school in the world that teaches students to think is a potential customer. The window to build this is open. It will not stay open.
+  </div>
+  <div class="thesis-pillars">
+    <div class="tp">
+      <div class="tp-num">01 — The problem</div>
+      <div class="tp-head">The education system wasn't built for this moment.</div>
+      <div class="tp-body">Curricula designed for an information-scarce world cannot produce the judgment that an AI-saturated world demands. The structural gap is real, growing — and the institutions responsible for closing it are making it worse.</div>
+    </div>
+    <div class="tp">
+      <div class="tp-num">02 — The solution</div>
+      <div class="tp-head">Philosophy is the answer schools aren't using.</div>
+      <div class="tp-body">2,500 years of accumulated human reasoning — argument construction, ethical thinking, logic, epistemology — is the precise toolkit the moment requires. It exists in curricula. It just isn't taught well, at scale, or accessibly. Nothing on the market is built to change that.</div>
+    </div>
+    <div class="tp">
+      <div class="tp-num">03 — The proof</div>
+      <div class="tp-head">Philosophia proves the thesis works.</div>
+      <div class="tp-body">Built without a brief, live without a marketing spend, drawing immediate affirmation from founders and strategic thinkers. The prototype demonstrates that rigorous philosophy education can be beautiful, scalable, and wanted.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-eyebrow">The Infrastructure Gap</div>
+  <h2 class="section-h2">The ideas that teach<br>judgment are locked away.</h2>
+  <div class="problem-grid">
+    <div class="problem-statement">
+      <p>The ideas that underpin <strong>critical thinking, ethics, logic, and how we understand the world</strong> are locked inside dense academic texts — inaccessible to most students, intimidating to many teachers, and largely invisible to the institutions that claim to value them.</p>
+      <br>
+      <p>The result is a generation that encounters Plato, Kant, and Nietzsche as names on a syllabus rather than as living, connected ideas with direct relevance to their lives and the world they're inheriting.</p>
+      <br>
+      <p>AI amplifies this gap. The capacity to generate text is now universal. The capacity to <strong>evaluate, reason, and judge</strong> that text is not. That's the gap Project Logos exists to close.</p>
+    </div>
+    <div class="problem-quotes">
+      <div class="pq">
+        <p class="pq-text">"The most important part of teaching is not the information aspect of it. You're teaching skills. What you're doing is teaching people how to think critically. The problem comes if we don't do that. These skills are not intuitive. They have to be learned."</p>
+        <div class="pq-attr">Warren Smith — Former Educator, "Why Critical Thinking Is Dead", Trigonometry Podcast</div>
+      </div>
+      <div class="pq">
+        <p class="pq-text">"Critical thinking is a core element across all IB programmes — not just DP Philosophy. Every IB school is addressing this."</p>
+        <div class="pq-attr">IBO AI Assistant, ibo.org</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="product" id="product">
+  <div class="section-eyebrow">The MVP — Philosophia</div>
+  <h2 class="section-h2">The love of wisdom.<br>Made accessible.</h2>
+  <p class="section-body">An interactive, narrative-driven philosophy platform — the first deployment of Project Logos, and proof that rigorous ideas can be made beautiful, scalable, and wanted.</p>
+  <div class="product-grid">
+    <div class="product-stats">
+      <div class="ps-item">
+        <div class="ps-num">29</div>
+        <div class="ps-label">Philosophers</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">2,500</div>
+        <div class="ps-label">Years of Thought</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">158</div>
+        <div class="ps-label">Core Questions</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">5</div>
+        <div class="ps-label">Historical Eras</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">8</div>
+        <div class="ps-label">Activity Types</div>
+      </div>
+      <div class="ps-item">
+        <div class="ps-num">100%</div>
+        <div class="ps-label">IB / A-Level Aligned</div>
+      </div>
+    </div>
+    <div class="product-desc">
+      <p>Philosophia maps the entire history of Western philosophy as an interconnected web of ideas — not a list of names and dates, but a living conversation across 2,500 years. Each philosopher connects to others. Each idea leads somewhere.</p>
+      <p>Interactive quizzes adapt to the learner. Narrative prose replaces dry academic language. The visual design is deliberately beautiful — because how something looks changes how you feel about learning it.</p>
+      <p>Philosophia is <strong>Playbook One</strong> in the Project Logos series. It demonstrates the platform thesis at scale: that the infrastructure for reasoning education can be built, made beautiful, and commercialised globally.</p>
+      <div class="product-mvp-tag">Φ Philosophia — Live at rossduncan.com/philosophia</div>
+      <br>
+      <a href="https://rossduncan.com/philosophia" target="_blank" class="product-url">Try the prototype →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="market" id="market">
+  <div class="section-eyebrow">The Market</div>
+  <h2 class="section-h2">A $10 trillion industry<br>undergoing rapid digital<br>transformation.</h2>
+  <div class="market-grid">
+    <div class="market-card accent">
+      <div class="mc-num">$10T<sup>↑</sup></div>
+      <div class="mc-label">Global education market projected by 2030, at 4.4% CAGR</div>
+      <div class="mc-source">Source: HolonIQ 2025 Global Education Outlook</div>
+    </div>
+    <div class="market-card">
+      <div class="mc-num tort">$7.3T</div>
+      <div class="mc-label">Total global education and training market in 2025</div>
+      <div class="mc-source">Source: HolonIQ</div>
+    </div>
+    <div class="market-card accent2">
+      <div class="mc-num">34%<sup>↑</sup></div>
+      <div class="mc-label">Growth in IB programmes offered worldwide, 2020–2024</div>
+      <div class="mc-source">Source: International Baccalaureate Organisation</div>
+    </div>
+    <div class="market-card">
+      <div class="mc-num">6,100<sup>+</sup></div>
+      <div class="mc-label">IB World Schools across 160+ countries — the beachhead market</div>
+      <div class="mc-source">Source: IBO Facts & Figures, April 2026</div>
+    </div>
+    <div class="market-card">
+      <div class="mc-num">614M<sup>+</sup></div>
+      <div class="mc-label">Secondary school students globally — the platform opportunity</div>
+      <div class="mc-source">Source: World Bank / UNESCO</div>
+    </div>
+    <div class="market-card">
+      <div class="mc-num">$2.4B</div>
+      <div class="mc-label">EdTech venture capital in 2025, favouring AI-enabled platforms</div>
+      <div class="mc-source">Source: HolonIQ 2026 Global Education Outlook</div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE-TIER TAM -->
+<section class="tam">
+  <div class="section-eyebrow">Addressable Market</div>
+  <h2 class="section-h2">Three tiers. One platform.<br>Every school that teaches thinking.</h2>
+  <p class="section-body">We start where the signal is strongest and the willingness to pay is proven. We scale to where the opportunity is transformational.</p>
+  <div class="tam-tiers">
+    <div class="tam-tier t1">
+      <div>
+        <div class="tt-label">Tier 1 — Beachhead · Years 1–3</div>
+        <div class="tt-name">IB World Schools</div>
+      </div>
+      <div class="tt-body">Internationally-minded, quality-focused, already paying for premium EdTech. Critical thinking is mandatory across all IB programmes. Every IB school is addressable. Source: IBO Facts & Figures, April 2026.</div>
+      <div class="tt-num">
+        <div class="tt-schools">6,100<sup style="font-size:0.5em;font-weight:300;">+</sup></div>
+        <div class="tt-schools-label">schools globally</div>
+      </div>
+    </div>
+    <div class="tam-tier t2">
+      <div>
+        <div class="tt-label">Tier 2 — Expansion · Years 3–5</div>
+        <div class="tt-name">International Curriculum Schools</div>
+      </div>
+      <div class="tt-body">A-Level (~6K centres), French Baccalauréat (~4K schools — philosophy is compulsory for all students), AP (~22K US schools), Australian ATAR, and other international programmes globally.</div>
+      <div class="tt-num">
+        <div class="tt-schools">~50K</div>
+        <div class="tt-schools-label">schools globally</div>
+      </div>
+    </div>
+    <div class="tam-tier t3">
+      <div>
+        <div class="tt-label">Tier 3 — Platform · Year 5+</div>
+        <div class="tt-name">Global Upper Secondary</div>
+      </div>
+      <div class="tt-body">Every upper secondary school in the world that teaches students to think. At 0.1% penetration — one in a thousand schools — the revenue opportunity exceeds A$1 billion annually.</div>
+      <div class="tt-num">
+        <div class="tt-schools">500K<sup style="font-size:0.5em;font-weight:300;">+</sup></div>
+        <div class="tt-schools-label">schools globally</div>
+      </div>
+    </div>
+  </div>
+  <div class="tam-total">
+    <div>
+      <div class="tt-total-head">Year 5 Revenue (Base Case)</div>
+      <div class="tt-total-num">A$9.3M</div>
+    </div>
+    <div>
+      <div class="tt-total-head">Implied Valuation at 8x</div>
+      <div class="tt-total-num">A$74M</div>
+    </div>
+    <div class="tt-total-body">Conservative model. Tier 1 + Tier 2 penetration only. Tier 3 not included in base case revenue projections. Full commercial model available on request.</div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="section-eyebrow">Platform Vision</div>
+  <h2 class="section-h2">Philosophia is the first<br>of many playbooks.</h2>
+  <p class="section-body">The intellectual playbook format is a platform, not a single product. Each subject becomes a beautifully designed, curriculum-aligned interactive experience — deployed under Project Logos.</p>
+  <div class="vision-grid">
+    <div class="vc active">
+      <div class="vc-phi">Φ</div>
+      <div class="vc-name">Philosophia</div>
+      <div class="vc-desc">Philosophy — 2,500 years of thought, mapped and made navigable.</div>
+      <div class="vc-tag">Live now</div>
+    </div>
+    <div class="vc oikonomia">
+      <div class="vc-phi" style="color:var(--tort);">Ο</div>
+      <div class="vc-name">Oikonomia</div>
+      <div class="vc-desc">Economics — from Adam Smith to behavioural economics and beyond.</div>
+      <div class="vc-tag">In development</div>
+    </div>
+    <div class="vc politeia">
+      <div class="vc-phi" style="color:#b5453a;">Π</div>
+      <div class="vc-name">Politeia</div>
+      <div class="vc-desc">Political thought — the ideas that shaped nations and movements.</div>
+      <div class="vc-tag">Planned</div>
+    </div>
+    <div class="vc physica">
+      <div class="vc-phi" style="color:#6b5f94;">Φ</div>
+      <div class="vc-name">Physica</div>
+      <div class="vc-desc">The history of scientific thought — from Aristotle to quantum mechanics.</div>
+      <div class="vc-tag">Planned</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section class="traction">
+  <div class="section-eyebrow">Traction</div>
+  <h2 class="section-h2">Early. Honest.<br>Moving with purpose.</h2>
+
+  <div class="traction-arrow">
+    <div class="traction-track">
+      <div class="traction-line"></div>
+      <div class="traction-nodes">
+        <div class="tt-node">
+          <div class="tt-label">The Build</div>
+          <div class="tt-dot"></div>
+          <div class="tt-text"><strong>Concept to product in days.</strong> Built on existing Light House playbook work. Speed with intent.</div>
+        </div>
+        <div class="tt-node">
+          <div class="tt-label">Early Response</div>
+          <div class="tt-dot"></div>
+          <div class="tt-text"><strong>The verdict: this needs to exist.</strong> Shown to founders and strategic thinkers — including one with a philosophy degree.</div>
+        </div>
+        <div class="tt-node">
+          <div class="tt-label">The Thesis</div>
+          <div class="tt-dot"></div>
+          <div class="tt-text"><strong>Research meets conviction.</strong> Market research and early feedback pointed to the same conclusion.</div>
+        </div>
+        <div class="tt-node">
+          <div class="tt-label">No Marketing</div>
+          <div class="tt-dot"></div>
+          <div class="tt-text"><strong>Zero paid reach.</strong> No cold outreach. No ads. Every conversation warm and product-led.</div>
+        </div>
+        <div class="tt-node">
+          <div class="tt-label">Curriculum</div>
+          <div class="tt-dot"></div>
+          <div class="tt-text"><strong>Alignment by design.</strong> IB Philosophy and A-Level curriculum built in from day one.</div>
+        </div>
+        <div class="tt-node">
+          <div class="tt-label">Next →</div>
+          <div class="tt-dot"></div>
+          <div class="tt-text"><strong>Educator validation.</strong> Schools and university departments. Building the institutional evidence base.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE MODEL -->
+<section class="revenue">
+  <div class="section-eyebrow">Business Model</div>
+  <h2 class="section-h2">Four revenue streams.<br>One compounding platform.</h2>
+  <p class="section-body">A diversified model with institutional licensing as the primary commercial engine — supplemented by CPD, corporate, and digital revenue from day one.</p>
+  <div class="revenue-streams">
+    <div class="rs">
+      <div class="rs-num">Stream 01</div>
+      <div class="rs-name">School Licensing</div>
+      <div class="rs-price">A$2,500–3,500 pa per school</div>
+      <ul class="rs-features">
+        <li>Full content library access</li>
+        <li>Student accounts & tracking</li>
+        <li>Assessment & quiz tools</li>
+        <li>Curriculum alignment guides</li>
+        <li>Scales across all three tiers</li>
+      </ul>
+    </div>
+    <div class="rs">
+      <div class="rs-num">Stream 02</div>
+      <div class="rs-name">Teacher CPD</div>
+      <div class="rs-price">A$500–700 per teacher</div>
+      <ul class="rs-features">
+        <li>Philosophy pedagogy certification</li>
+        <li>Socratic facilitation techniques</li>
+        <li>Curriculum integration frameworks</li>
+        <li>Digital delivery — highly scalable</li>
+      </ul>
+    </div>
+    <div class="rs">
+      <div class="rs-num">Stream 03</div>
+      <div class="rs-name">Corporate & Executive</div>
+      <div class="rs-price">A$15,000–25,000 per engagement</div>
+      <ul class="rs-features">
+        <li>Philosophy-based leadership programmes</li>
+        <li>Decision-making under uncertainty</li>
+        <li>Ethical reasoning frameworks</li>
+        <li>High margin, differentiated</li>
+      </ul>
+    </div>
+    <div class="rs">
+      <div class="rs-num">Stream 04</div>
+      <div class="rs-name">Digital Products</div>
+      <div class="rs-price">Licensing & white-label</div>
+      <ul class="rs-features">
+        <li>Assessment & analytics tools</li>
+        <li>University module licensing</li>
+        <li>White-label for other providers</li>
+        <li>Government & institutional</li>
+      </ul>
+    </div>
+  </div>
+  <div class="revenue-projections">
+    <div class="rp">
+      <div class="rp-year">2026</div>
+      <div class="rp-rev">A$249<span>K</span></div>
+      <div class="rp-ebitda">EBITDA: (A$6K)</div>
+    </div>
+    <div class="rp">
+      <div class="rp-year">2027</div>
+      <div class="rp-rev">A$926<span>K</span></div>
+      <div class="rp-ebitda">EBITDA: A$716K</div>
+    </div>
+    <div class="rp highlight">
+      <div class="rp-year">2028</div>
+      <div class="rp-rev">A$2.5<span>M</span></div>
+      <div class="rp-ebitda">EBITDA: A$2.2M · 91%</div>
+    </div>
+    <div class="rp">
+      <div class="rp-year">2029</div>
+      <div class="rp-rev">A$5.1<span>M</span></div>
+      <div class="rp-ebitda">EBITDA: A$4.8M · 95%</div>
+    </div>
+    <div class="rp">
+      <div class="rp-year">2030</div>
+      <div class="rp-rev">A$9.3<span>M</span></div>
+      <div class="rp-ebitda">EBITDA: A$9.0M · 97%</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder">
+  <div class="section-eyebrow">The Founder</div>
+  <h2 class="section-h2">Ross Duncan</h2>
+  <div class="founder-grid">
+    <div>
+      <div class="founder-img">
+        <img src="/assets/images/ross-photo.jpg" alt="Ross Duncan" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
+      </div>
+      <div class="founder-name">Ross Duncan</div>
+    </div>
+    <div class="founder-bio">
+      <p>Ross Duncan is the founder of <strong>Light House</strong> — a Thinking Brand built to address the growing complexity of the modern world. Project Logos is the most ambitious expression of that mission: reasoning infrastructure for the AI era, starting with education.</p>
+      <p>Philosophia was built as both a product and a proof of concept — demonstrating that genuinely beautiful, intellectually rigorous educational content can be created at scale, and that people respond to it immediately. The prototype went from concept to live in days. Investor interest followed within 24 hours, without a pitch.</p>
+      <p>Ross brings the combination of strategic thinking, brand intelligence, and design sensibility that most EdTech products conspicuously lack. This isn't a technology play searching for a problem. It is a platform built from a genuine belief that <em>judgment is the most valuable thing we can teach.</em></p>
+      <div class="founder-lh">
+        <div class="flh-label">Light House</div>
+        <div class="flh-text">Complexity accumulates. Clarity requires subtraction. Light House is a Thinking Brand for leaders and organisations navigating complexity — and Project Logos is the clearest expression of that mission applied to the world's most important problem: how we learn to think.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS FOUNDER -->
+<section class="why-founder">
+  <div class="section-eyebrow">Why This Founder</div>
+  <h2 class="section-h2">Five reasons this founder,<br>this platform.</h2>
+  <div class="why-grid">
+    <div class="wf">
+      <div class="wf-num">01</div>
+      <div class="wf-head">Built it without being asked.</div>
+      <div class="wf-body">Philosophia wasn't a brief or a commission. It was built because it needed to exist. That kind of conviction is rare.</div>
+    </div>
+    <div class="wf">
+      <div class="wf-num">02</div>
+      <div class="wf-head">Design as competitive advantage.</div>
+      <div class="wf-body">Most EdTech is ugly. Philosophia is genuinely beautiful. That's not aesthetics — it's strategy. Design changes how people feel about learning.</div>
+    </div>
+    <div class="wf">
+      <div class="wf-num">03</div>
+      <div class="wf-head">Marketing built in from day one.</div>
+      <div class="wf-body">The product is the marketing. Organic sharing, unsolicited investor interest — without a single paid impression. Most platforms can't say that.</div>
+    </div>
+    <div class="wf">
+      <div class="wf-num">04</div>
+      <div class="wf-head">The brand and the platform share a philosophy.</div>
+      <div class="wf-body">Light House cuts complexity. Project Logos cuts through 2,500 years of thought. That through-line is real, not manufactured.</div>
+    </div>
+    <div class="wf">
+      <div class="wf-num">05</div>
+      <div class="wf-head">This is a mission, not a market opportunity.</div>
+      <div class="wf-body">The best founders build things they couldn't not build. Project Logos is one of those. That changes how the work gets done.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK -->
+<section class="ask" id="investor">
+  <div class="section-eyebrow">The Ask</div>
+  <h2 class="section-h2">Seed investment to take<br>Project Logos to the world.</h2>
+  <p class="section-body">A focused seed round to complete Philosophia, build the content library, establish the first institutional partnerships, and lay the foundation for the platform.</p>
+  <div class="ask-grid">
+    <div class="ak">
+      <div class="ak-label">01 — Product</div>
+      <div class="ak-head">Complete the platform</div>
+      <div class="ak-body">Development to production-grade: full content library, student accounts, progress tracking, classroom tools, and mobile optimisation. AI-assisted development reduces cost without compromising quality.</div>
+    </div>
+    <div class="ak">
+      <div class="ak-label">02 — Content</div>
+      <div class="ak-head">Expand the library</div>
+      <div class="ak-body">Commission specialist content for the full IB and A-Level philosophy curriculum. Human-in-the-loop expert review ensures rigour. Begin development of Oikonomia — the second playbook in the series.</div>
+    </div>
+    <div class="ak">
+      <div class="ak-label">03 — Distribution</div>
+      <div class="ak-head">Reach the schools</div>
+      <div class="ak-body">Direct outreach to IB World Schools globally. Pilot programmes with two to three institutions. Build the evidence base for institutional licensing at scale across all three market tiers.</div>
+    </div>
+  </div>
+  <div class="ask-total">
+    <div>
+      <div class="at-label">Seed Investment Sought</div>
+      <div class="at-amount">A$300K</div>
+    </div>
+    <div class="at-desc">An early-stage investment in a platform that already exists, already attracts attention, and is built by a founder who understands both the ideas and the market. Pre-money valuation: A$1.75M.</div>
+  </div>
+  <div class="ask-returns">
+    <div class="ar">
+      <div class="ar-label">Investor Equity</div>
+      <div class="ar-num">14.6%</div>
+      <div class="ar-desc">Post-money, at A$1.75M pre-money valuation</div>
+    </div>
+    <div class="ar">
+      <div class="ar-label">Year 3 Return (8x)</div>
+      <div class="ar-num">9.6x</div>
+      <div class="ar-desc">On A$300K invested — base case Series A scenario</div>
+    </div>
+    <div class="ar">
+      <div class="ar-label">Year 5 Return (8x)</div>
+      <div class="ar-num">~36x</div>
+      <div class="ar-desc">Exceptional outcome — full model available on request</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-phi">Λ</div>
+  <h2 class="cta-h2">Ready to back the infrastructure<br>for human judgment?</h2>
+  <p class="cta-sub">Whether you're an investor, an educator, or someone who believes<br>that thinking is the most valuable thing we can teach — we'd like to hear from you.</p>
+  <div class="cta-btns">
+    <a href="mailto:ross@lighterhouse.co?subject=Project Logos — Investor Enquiry" class="btn-cta-primary">Investor Enquiry</a>
+    <a href="mailto:ross@lighterhouse.co?subject=Philosophia — School Interest" class="btn-cta-secondary">School / Educator Interest</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><strong>Light House</strong> — lighterhouse.co · Project Logos · Philosophia</div>
+  <div class="footer-tagline">Complexity accumulates. Clarity requires subtraction.</div>
+</footer>
+
+</body>
+</html>
